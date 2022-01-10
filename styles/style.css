@@ -7,3 +7,10 @@
     border-spacing: 4mm;
     width: 25%;
   }
+
+  .flex-container {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+  }

@@ -37,6 +37,7 @@ function signup() {
 
 function ifSuccess(r) {
     console.log(r);
+    window.location.href = 'LogIn.html';
     // TODO: implement what happens when I get a successful response from server
 }
 
