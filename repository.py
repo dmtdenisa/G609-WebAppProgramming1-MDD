@@ -2,7 +2,7 @@ import sqlite3
 from datetime import datetime
 
 
-database = "G609-WebAppProgramming1-MDDv2\SB_database.db"
+database = "SB_database.db"
 
 
 def connect_to_database(path_to_database_file):

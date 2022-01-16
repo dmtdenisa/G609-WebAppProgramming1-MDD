@@ -1,11 +1,29 @@
 from flask import Flask, request, redirect, url_for
 from flask_cors import CORS
-
+import jwt
 from repository import database, connect_to_database, create_user, get_user_password
+import datetime
+from functools import wraps
 
 app = Flask("UsersAPI")
 CORS(app)
+app.config['SECRET_KEY']='jnlwbiRIQ7XulA'
 
+def token_required(f):
+    @wraps(f)
+    def decorated(*args, **kwargs):
+        token = request.args.get('token')
+
+        if not token:
+            return jsonify({'message': 'token is missing'}), 403
+
+        try:
+            data = jwt.decode(token, app.config['SECRET_KEY'])
+        except:
+            return jsonify({'message': 'token is invalid'}), 403
+
+        return f(*args, **kwargs)
+    return decorated
 
 @app.route("/api/v1/sign-up", methods=["POST"])
 def signup():
@@ -63,14 +81,21 @@ def sign_in():
         #         "error": "--Failed to sign in. Email or password are wrong."
         #     }
         #     return error, 401
+        token = jwt.encode({'email': email, 'exp': datetime.datetime.utcnow() + datetime.timedelta(minutes=30)}, app.config['SECRET_KEY'])
 
-        return '', 204
+        #return '', 204
+        return jsonify({'token': token.decode('UTF-8')}), 204
+    
     except Exception as e:
         error = {
             "error": f"--Failed to sign in. Cause: {e}"
         }
         return error, 500
 
+@app.route("/api/v1/completeProfile", methods=["POST"])
+@token_required
+def complete_profile():
+    return '', 204
 
 if __name__ == "__main__":
     app.run(debug=True, port=3004)
