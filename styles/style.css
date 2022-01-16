@@ -14,3 +14,9 @@
 
     justify-content: center;
   }
+
+  body {
+    background: linear-gradient(135deg, #040242, #4d0d5e);
+    overflow: hidden;
+    font-family: 'Dongle', sans-serif;
+  }

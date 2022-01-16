@@ -81,7 +81,7 @@ def sign_in():
         #         "error": "--Failed to sign in. Email or password are wrong."
         #     }
         #     return error, 401
-        token = jwt.encode({'email': email, 'exp': datetime.datetime.utcnow() + datetime.timedelta(seconds=10)}, app.config['SECRET_KEY'])
+        token = jwt.encode({'email': email, 'exp': datetime.datetime.utcnow() + datetime.timedelta(minutes=30)}, app.config['SECRET_KEY'])
 
         #return '', 204
         raspuns= jsonify({'token' : token})

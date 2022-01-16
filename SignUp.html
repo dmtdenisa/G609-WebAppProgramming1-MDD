@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="SignUp.js"></script>
     <link rel="stylesheet" href="styles\style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dongle&display=swap" rel="stylesheet">
     <!-- Bootstrap CSS -->
     <link
       rel="stylesheet"
@@ -16,7 +19,7 @@
     <title>Sign Up</title>
 </head>
 <body class="">
-  <nav class=" navbar navbar-expand-md navbar-light bg-info">
+  <nav class=" navbar navbar-expand-md navbar-dark" style="font-family: 'Dongle', sans-serif; font-size: 100px;">
     <a class="navbar-brand font-weight-bold" href="#">StudyBuds</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -25,20 +28,20 @@
     
 
   </nav>
-    <div class="center text-lg-center">
+    <div class="center text-lg-center text-light" style="font-family: 'Dongle', sans-serif; font-size: 25px;">
         <label for="FNinput">Prenume</label>
-        <input name="firstName" id="FNinput" type="text" placeholder="Prenume" class="form-control"/><br>
+        <input name="firstName" id="FNinput" type="text" placeholder="Prenume" class="form-control"/>
         <label for="LNinput">Nume</label>
-        <input name="lastName" id="LNinput" type="text" placeholder="Nume" class="form-control"/><br>
+        <input name="lastName" id="LNinput" type="text" placeholder="Nume" class="form-control"/>
         <label for="Einput">Email</label>
         <div class="input-group mb-3">
             <div class="input-group-prepend">
               <span class="input-group-text" id="basic-addon1">@</span>
             </div>
-            <input name="email" id="Einput" type="email" placeholder="Email" class="form-control"/><br>
+            <input name="email" id="Einput" type="email" placeholder="Email" class="form-control"/>
         </div>
         <label for="Pinput">Parola</label>
-        <input name="password" id="Pinput" type="password" placeholder="Parola" class="form-control"/><br>
+        <input name="password" id="Pinput" type="password" placeholder="Parola" class="form-control"/>
         <label for="sPinput">Reintroduceti Parola</label>
         <input name="secondPassword" id="sPinput" type="password" placeholder="Reintroduceti Parola" class="form-control" /><br>
         <button onclick="signup()" class="btn btn-outline-dark btn-light">Creati cont nou</button><br>
