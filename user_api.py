@@ -1,7 +1,7 @@
-from flask import Flask, request, redirect, url_for
+from flask import Flask, request, redirect, url_for, jsonify
 from flask_cors import CORS
 import jwt
-from repository import database, connect_to_database, create_user, get_user_password
+from repository import database, connect_to_database, create_user, get_user_password, complete_profile
 import datetime
 from functools import wraps
 
@@ -81,10 +81,11 @@ def sign_in():
         #         "error": "--Failed to sign in. Email or password are wrong."
         #     }
         #     return error, 401
-        token = jwt.encode({'email': email, 'exp': datetime.datetime.utcnow() + datetime.timedelta(minutes=30)}, app.config['SECRET_KEY'])
+        token = jwt.encode({'email': email, 'exp': datetime.datetime.utcnow() + datetime.timedelta(seconds=10)}, app.config['SECRET_KEY'])
 
         #return '', 204
-        return jsonify({'token': token.decode('UTF-8')}), 204
+        raspuns= jsonify({'token' : token})
+        return raspuns, 204
     
     except Exception as e:
         error = {
@@ -92,9 +93,15 @@ def sign_in():
         }
         return error, 500
 
-@app.route("/api/v1/completeProfile", methods=["POST"])
+@app.route("/api/v1/completeProfile", methods=["POST", "GET"])
 @token_required
 def complete_profile():
+    body = request.json
+    if not body:
+        error = {
+            "error": "--Failed to complete profile. Empty body provided."
+        }
+        return error, 400
     return '', 204
 
 if __name__ == "__main__":
