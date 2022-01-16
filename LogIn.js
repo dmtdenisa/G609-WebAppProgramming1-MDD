@@ -31,7 +31,7 @@ function ifSuccess(response){
 
 function onSuccess(r) {
     console.log(r);
-    window.location.href = 'SignUp.html';
+    window.location.href = 'completeProfile.html';
     // TODO: implement what happens when I get a successful response from server
 }
 
