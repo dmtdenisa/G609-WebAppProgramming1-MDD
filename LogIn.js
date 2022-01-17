@@ -9,7 +9,7 @@ function login(){
 
     const options = {
         "body": JSON.stringify(body),
-        "method": "POST",
+        "method": "GET",
         "mode": "cors",
         "headers": {
             "Content-Type": "application/json",

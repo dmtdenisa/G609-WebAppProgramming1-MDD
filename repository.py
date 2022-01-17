@@ -45,3 +45,12 @@ def complete_profile(conn,body, email):
     cursor = conn.cursor()
     cursor.execute(query, user_data)
     conn.commit()
+
+def get_user_email(conn, email):
+    query = f"select email from users where email='{email}'"
+    cursor = conn.cursor()
+    email = list(cursor.execute(query))
+    if email:
+        return email[0][0]
+    else:
+        return None
