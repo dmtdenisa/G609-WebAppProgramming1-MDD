@@ -3,11 +3,13 @@ const url="http://localhost:3004/api/v1/completeProfile"
 function complete_profile(){
     const facultate = document.getElementsByName("facultateID")[0].value;
     const skill = document.getElementsByName("skillInpName")[0].value;
+    const telefon = document.getElementsByName("telefonInpName")[0].value;
 
     const body = {
-        "facultate": facultate,
-        "skill":skill
-    };
+        "faculy": facultate,
+        "skill":skill,
+        "phone": telefon
+    }; 
 
     const options = {
         "body": JSON.stringify(body),
