@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles\style.css">
     <script src="LogIn.js"></script>
+    <link rel="stylesheet" href="styles\style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dongle&display=swap" rel="stylesheet">
     <!-- Bootstrap CSS -->
     <link
       rel="stylesheet"
@@ -15,31 +19,21 @@
     />
     <title>Log In</title>
 </head>
-<body class="flex-container">
-  <!-- 
-    <nav class=" navbar navbar-expand-md navbar-light bg-info">
-        <a class="navbar-brand font-weight-bold" href="#">StudyBuds</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-    
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav my-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Log In <span class="sr-only">(current)</span></a>
-            </li>
-    
-            </ul>
-        </div>
-    
-      </nav>-->
-      <div class="text-lg-center center" style="width: 25%;">
-          <label for="emailLI">Email</label>
-          <input type="email" placeholder="Email" class="form-control" name="emailLI" id="emailLI"><br>
-          <label for="parolaLI">Parola</label> 
-          <input type="password" placeholder="Parola" name="parolaLI" id="parolaLI" class=" form-control"><br>
-          <button onclick="login()" class="btn btn-outline-dark btn-light">Intrati in cont</button><br>
-            <p style="margin-top: 10px;" class="font-weight-light text-sm-center">
+<body>
+  <nav class=" navbar navbar-expand-md navbar-dark" style="font-family: 'Dongle', sans-serif; font-size: 100px;">
+    <a class="navbar-brand font-weight-bold" style="font-size: 40px;" href="#">StudyBuds</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </nav>
+      <div class="text-lg-center ajustare  text-light" style="margin: 5%;">
+        <h5 style="font-size: 40px; font-stretch: expanded;">Log In</h5>
+          <label for="emailLI" class="elemente">Email</label>
+          <input type="email" placeholder="Email" class="form-control elemente" name="emailLI" id="emailLI">
+          <label for="parolaLI" class="elemente" >Parola</label> 
+          <input type="password" placeholder="Parola" name="parolaLI" id="parolaLI" class="elemente form-control"><br>
+          <button onclick="login()" class="btn btn-outline-dark btn-light elemente">Intrati in cont</button><br>
+            <p style="margin-top: 10px;" class="font-weight-light text-sm-center elemente">
               Nu aveti cont?<a href="SignUp.html">Apasati aici!</a>
             </p>
       </div>
