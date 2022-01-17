@@ -1,8 +1,9 @@
+
 .card {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
     border-radius: 5px;
-    width: 100%;
+    width: 110%;
     padding-left: 10%;
     padding-right: 10%;
   }
@@ -16,11 +17,9 @@
   .container {
     padding: 15%;
     
+    
   }
 
-  img {
-    border-radius: 15px 15px 0 0;
-  }
 
   .center {
     /* Center vertically and horizontally */
@@ -30,5 +29,27 @@
     transform: translate(-50%, -50%);
     border-spacing: 4mm;
     width: 25%;
+
   }
+
+ div {
+    font-family: 'Dongle', sans-serif;
+  }
+
+  div h4 {
+    font-size: 30px;
+  }
+
+ div.container > label {
+   font-size: 28px;
+ }
+
+ div.container1 > button {
+  font-size: 20px;
+  padding: 1%;
+}
+
+div.container > .ajustare {
+  font-size: 25px;
+}
 

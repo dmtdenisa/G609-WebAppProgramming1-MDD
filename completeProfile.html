@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/detailuser.css">
     <script src="completeProfile.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dongle&display=swap" rel="stylesheet">
     <!-- Bootstrap CSS -->
     <link
       rel="stylesheet"
@@ -18,9 +21,9 @@
 <body class="center">
     <div class="card" >
         <div class="container">
-          <h4 class=" font-weight-light"> Completeaza-ti profilul: </h4><br>
-          <label for="facultateID" class="">Facultate</label>
-          <select id="facultateID" name="facultateID" class=" form-control" aria-placeholder="facultate">
+          <h4 class=" font-weight-light" > Completeaza-ti profilul: </h4><br>
+          <label for="facultateID" class=" ajustare">Facultate</label>
+          <select id="facultateID" name="facultateID" class=" form-control  ajustare" aria-placeholder="facultate">
             <option value="">Alege facultatea</option>option></option>
             <option value="managementMarketing">Management-Marketing</option>
             <option value="relatiiComercialeSiFinanciarBancare">Relatii Comerciale Si Financiar-Bancare</option>
@@ -30,10 +33,12 @@
             <option value="studiiEconomiceEuropene">Studii Ecoomice Europene</option>
             <option value="educatieFizicaSportKineto">Educatie Fizica, Sport Si Kinetoterapie</option>
           </select>
-          <label for="skillInpName" class=" form-control-plaintext">Skill</label>
-          <input id="skillInpID" name="skillInpName" type="text" class=" form-control"><br>
-          <div class="row justify-content-center">
-          <button onclick="" class=" btn btn-outline-primary col-6">Gata!</button>
+          <label for="skillInpName" class=" ajustare form-control-plaintext">Skill</label>
+          <input id="skillInpID" name="skillInpName" type="text" class=" ajustare form-control">
+          <label for="telefonInpName" class=" ajustare form-control-plaintext">Numar de telefon</label>
+          <input id="telefonID" name="telefonInpName" type="tel" class=" ajustare form-control"><br>
+          <div class="container1 row justify-content-center">
+            <button onclick="" class=" ajustare btn btn-outline-primary col-6">Gata!</button>
           </div>
         </div>
       </div>
