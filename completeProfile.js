@@ -10,14 +10,17 @@ function complete_profile(){
         "skill":skill,
         "phone": telefon
     }; 
-
+    let headers = {}
+    if (localStorage.token) {
+        headers = { "Authorization": `Bearer ${localStorage.token}` }
+    }else {
+        headers = { "Content-Type": "application/json"}
+    }
     const options = {
         "body": JSON.stringify(body),
         "method": "POST",
         "mode": "cors",
-        "headers": {
-            "Content-Type": "application/json",
-        }
+        "headers": headers
     }
 
     fetch(url,options).then(ifSuccess).then(onSuccess,onFailure).catch(error)

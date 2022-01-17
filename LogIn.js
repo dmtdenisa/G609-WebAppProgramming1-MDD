@@ -9,7 +9,7 @@ function login(){
 
     const options = {
         "body": JSON.stringify(body),
-        "method": "GET",
+        "method": "POST",
         "mode": "cors",
         "headers": {
             "Content-Type": "application/json",
@@ -31,12 +31,21 @@ function ifSuccess(response){
 
 function onSuccess(r) {
     console.log(r);
+    //const data=r.token
+    localStorage.setItem("token", r.token);
     window.location.href = 'completeProfile.html';
+    return r.token
     // TODO: implement what happens when I get a successful response from server
 }
 
 function onFailure(response){
-    return response.json().then(error);
+    //return response.json().then(error);
+    if(response.status === 401){
+        throw("Wrong username or password")
+   }
+   else if(response.status === 500){
+        throw ("General error")
+   }
 }
 
 function error(response) {

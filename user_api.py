@@ -1,29 +1,17 @@
 from flask import Flask, request, redirect, url_for, jsonify
 from flask_cors import CORS
-import jwt
-from repository import database, connect_to_database, create_user, get_user_password, complete_profile
+from flask_jwt_extended import JWTManager
+from flask_jwt_extended import create_access_token
+from flask_jwt_extended import get_jwt_identity
+from flask_jwt_extended import jwt_required
+from repository import database, connect_to_database, create_user, get_user_email, get_user_password, complete_profile
 import datetime
 from functools import wraps
 
 app = Flask("UsersAPI")
 CORS(app)
 app.config['SECRET_KEY']='jnlwbiRIQ7XulA'
-
-def token_required(f):
-    @wraps(f)
-    def decorated(*args, **kwargs):
-        token = request.args.get('token')
-
-        if not token:
-            return jsonify({'message': 'token is missing'}), 403
-
-        try:
-            data = jwt.decode(token, app.config['SECRET_KEY'])
-        except:
-            return jsonify({'message': 'token is invalid'}), 403
-
-        return f(*args, **kwargs)
-    return decorated
+jwt = JWTManager(app)
 
 @app.route("/api/v1/sign-up", methods=["POST"])
 def signup():
@@ -76,9 +64,8 @@ def sign_in():
             }
             return error, 401
 
-        token = jwt.encode({'email': email, 'exp': datetime.datetime.utcnow() + datetime.timedelta(minutes=30)}, app.config['SECRET_KEY'])
-
-        return jsonify({'token' : token}),204
+        access_token = create_access_token(identity=email)
+        return jsonify(access_token=access_token)
 
     except Exception as e:
         error = {
@@ -87,15 +74,24 @@ def sign_in():
         return error, 500
 
 @app.route("/api/v1/completeProfile", methods=["POST", "GET"])
-@token_required
+@jwt_required()
 def complete_profile():
+    current_user = get_jwt_identity()
     body = request.json
     if not body:
         error = {
             "error": "--Failed to complete profile. Empty body provided."
         }
         return error, 400
-    return '', 204
+    try:
+        conn = connect_to_database(database)
+        complete_profile(conn,body,current_user)
+        return jsonify(logged_in_as=current_user),200
+    except Exception as e:
+        error = {
+            "error": f"--Failed to sign in. Cause: {e}"
+        }
+        return error, 500
 
 if __name__ == "__main__":
     app.run(debug=True, port=3004)
