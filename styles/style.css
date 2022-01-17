@@ -44,3 +44,9 @@ div.mb-3 > input{
 div.ajustare > button{
   font-size: 20px;
 }
+
+.createdBy {
+  margin-top: -9%;
+  max-width: 10%;
+  align-self: center;
+}
