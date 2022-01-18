@@ -10,7 +10,7 @@ from functools import wraps
 
 app = Flask("UsersAPI")
 CORS(app)
-app.config['SECRET_KEY']='jnlwbiRIQ7XulA'
+app.config['JWT_SECRET_KEY']='jnlwbiRIQ7XulA'
 jwt = JWTManager(app)
 
 @app.route("/api/v1/sign-up", methods=["POST"])
@@ -32,13 +32,7 @@ def signup():
             return error, 400
 
         conn = connect_to_database(database)
-        #user_details = [
-        #    body["first_name"],
-        #    body["last_name"],
-        #    body["email"],
-        #    body["password"]
-        #]
-
+     
         create_user(conn, body)
         conn.close()
 
@@ -73,7 +67,7 @@ def sign_in():
         }
         return error, 500
 
-@app.route("/api/v1/completeProfile", methods=["POST", "GET"])
+@app.route("/api/v1/sign-in/completeProfile", methods=["POST", "GET"])
 @jwt_required()
 def complete_profile():
     current_user = get_jwt_identity()
@@ -89,7 +83,7 @@ def complete_profile():
         return jsonify(logged_in_as=current_user),200
     except Exception as e:
         error = {
-            "error": f"--Failed to sign in. Cause: {e}"
+            "error": f"--Failed to complete profile. Cause: {e}"
         }
         return error, 500
 

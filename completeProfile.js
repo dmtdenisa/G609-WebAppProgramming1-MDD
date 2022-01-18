@@ -1,4 +1,4 @@
-const url="http://localhost:3004/api/v1/completeProfile"
+const url="http://localhost:3004/api/v1/sign-in/completeProfile"
 
 function complete_profile(){
     const facultate = document.getElementsByName("facultateID")[0].value;
@@ -12,13 +12,14 @@ function complete_profile(){
     }; 
     let headers = {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${localStorage.token}`
+        "Authorization": `Bearer ${sessionStorage.token}`,
+        //"Access-Control-Allow-Origin": "*"
     }
-    if (sessionStorage.token) {
-        headers = { "Authorization": `Bearer ${localStorage.token}` }
-    }else {
-        headers = { "Content-Type": "application/json"}
-    }
+    // if (sessionStorage.token) {
+    //     headers = { "Authorization": `Bearer ${localStorage.token}` }
+    // }else {
+    //     headers = { "Content-Type": "application/json"}
+    // }
     const options = {
         "body": JSON.stringify(body),
         "method": "POST",
@@ -40,7 +41,7 @@ function ifSuccess(response){
 function onSuccess(r) {
     console.log(r);
     window.location.href = 'feed.html';
-    // TODO: implement what happens when I get a successful response from server
+    
 }
 
 function onFailure(response){
