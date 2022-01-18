@@ -26,15 +26,15 @@ function ifSuccess(response){
     if(!response.ok){
         throw response;
     }
-    return response;
+    return response.json();
 }
 
-function onSuccess(r) {
-    console.log(r);
+function onSuccess(data) {
+    console.log(data);
     //const data=r.token
-    localStorage.setItem("token", r.token);
+    sessionStorage.setItem("token", data.access_token);
     window.location.href = 'completeProfile.html';
-    return r.token
+    return data.access_token
     // TODO: implement what happens when I get a successful response from server
 }
 

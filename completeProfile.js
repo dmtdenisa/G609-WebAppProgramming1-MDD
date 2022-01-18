@@ -10,8 +10,11 @@ function complete_profile(){
         "skill":skill,
         "phone": telefon
     }; 
-    let headers = {}
-    if (localStorage.token) {
+    let headers = {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${localStorage.token}`
+    }
+    if (sessionStorage.token) {
         headers = { "Authorization": `Bearer ${localStorage.token}` }
     }else {
         headers = { "Content-Type": "application/json"}
