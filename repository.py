@@ -36,16 +36,16 @@ def get_user_password(conn, email):
     else:
         return None
 
-def complete_profile(conn,body, email):
-    query = f"""insert into users(faculty, skills, phone) values (?,?,?) where email='{email}'"""
-    user_data = [
-        body.get("faculty"),
-        body.get("skill"),
-        body.get("phone") 
-    ]
-    cursor = conn.cursor()
-    cursor.execute(query, user_data)
-    conn.commit()
+# def complete_profile(conn,body, email):
+#     query = f"""insert into users(faculty, skills, phone) values (?,?,?) where email='{email}'"""
+#     user_data = [
+#         body.get("faculty"),
+#         body.get("skill"),
+#         body.get("phone") 
+#     ]
+#     cursor = conn.cursor()
+#     cursor.execute(query, user_data)
+#     conn.commit()
 
 def get_user_email(conn, email):
     query = f"select email from users where email='{email}'"
