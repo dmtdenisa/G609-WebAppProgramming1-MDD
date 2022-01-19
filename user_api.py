@@ -1,10 +1,11 @@
+import email
 from flask import Flask, request, redirect, url_for, jsonify
 from flask_cors import CORS
 from flask_jwt_extended import JWTManager
 from flask_jwt_extended import create_access_token
 from flask_jwt_extended import get_jwt_identity
 from flask_jwt_extended import jwt_required
-from repository import database, connect_to_database, create_user, get_user_email, get_user_password, complete_profile
+from repository import database, connect_to_database, create_user, get_user_email, get_user_password, get_user_profile, update_user_profile
 import datetime
 from functools import wraps
 
@@ -56,7 +57,7 @@ def sign_in():
             error = {
                 "error": "--Failed to sign in. Email or password are wrong."
             }
-            return error, 401
+            return jsonify(error), 401
 
         access_token = create_access_token(identity=email)
         return jsonify(access_token=access_token)
@@ -65,27 +66,28 @@ def sign_in():
         error = {
             "error": f"--Failed to sign in. Cause: {e}"
         }
-        return error, 500
+        return jsonify(error), 500
 
-@app.route("/api/v1/sign-in/completeProfile", methods=["POST", "GET"])
+@app.route("/api/v1/sign-in/completeProfile", methods=["PUT"])
 @jwt_required()
 def complete_profile():
     current_user = get_jwt_identity()
+    print(current_user)
     body = request.json
     if not body:
         error = {
             "error": "--Failed to complete profile. Empty body provided."
         }
-        return error, 400
+        return jsonify(error), 400
     try:
         conn = connect_to_database(database)
-        complete_profile(conn,body,current_user)
-        return jsonify(logged_in_as=current_user),200
+        update_user_profile(conn,body,current_user)
+        return '',200 #jsonify(logged_in_as=current_user)
     except Exception as e:
         error = {
             "error": f"--Failed to complete profile. Cause: {e}"
         }
-        return error, 500
+        return jsonify(error), 500
 
 if __name__ == "__main__":
     app.run(debug=True, port=3004)

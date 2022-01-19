@@ -2,12 +2,12 @@ const url="http://localhost:3004/api/v1/sign-in/completeProfile"
 
 function complete_profile(){
     const facultate = document.getElementsByName("facultateID")[0].value;
-    const skill = document.getElementsByName("skillInpName")[0].value;
+    const skills = document.getElementsByName("skillInpName")[0].value;
     const telefon = document.getElementsByName("telefonInpName")[0].value;
 
     const body = {
-        "faculy": facultate,
-        "skill":skill,
+        "faculty": facultate,
+        "skills":skills,
         "phone": telefon
     }; 
     let headers = {
@@ -22,7 +22,7 @@ function complete_profile(){
     // }
     const options = {
         "body": JSON.stringify(body),
-        "method": "POST",
+        "method": "PUT",
         "mode": "cors",
         "headers": headers
     }
@@ -54,10 +54,10 @@ function error(response) {
     html+="<strong>"+response.error;
     html+="</strong";
     let errorDivC = document.getElementsByName("alertaBootS")[0];
+    let errorDiv = document.createElement("div");
+    const body = document.getElementsByTagName("body")[0];
 
     if(!errorDivC) {
-        const body = document.getElementsByTagName("body")[0];
-        const errorDiv = document.createElement("div");
         errorDiv.setAttribute("name","alertaBootS");
         errorDiv.setAttribute("role","alert");
         //errorDiv.setAttribute("id","alertaBootSID");
