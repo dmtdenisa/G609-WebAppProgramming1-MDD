@@ -50,7 +50,7 @@ function onFailure(response){
 
 function error(response) {
     console.log(response);
-    let html="<a href='#' class='close' data-bs-dismiss='alert'>&times;</a>"
+    let html="<a href='#' class='close' data-bs-dismiss='alert' role='button'>&times;</a>"
     html+="<strong>"+response.error;
     html+="</strong";
     let errorDivC = document.getElementsByName("alertaBootS")[0];
