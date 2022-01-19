@@ -79,7 +79,6 @@ def get_user_profile(conn, email):
     return profile
 
 def update_user_profile(conn, user_details, email):
-    # create update query
     set_statement = ''
     for key, value in user_details.items():
         if key in ["first_name", 'last_name']:
@@ -100,7 +99,6 @@ def update_user_profile(conn, user_details, email):
     set_statement = set_statement[:-1]
     query = f"""UPDATE users SET {set_statement} WHERE email='{email}'"""
 
-    # execute query
     cursor = conn.cursor()
     cursor.execute(query)
     conn.commit()
