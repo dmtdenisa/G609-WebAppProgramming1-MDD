@@ -82,3 +82,8 @@ function sendMail3() {
     window.open(`mailto:${mail}`);
     //console.log(mail);
 }
+
+function logOut() {
+    sessionStorage.removeItem("token");
+    window.location.href = 'LogIn.html';
+}
