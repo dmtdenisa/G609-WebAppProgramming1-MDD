@@ -108,7 +108,7 @@ def update_user_profile(conn, user_details, email):
 
 def get_users_profiles(conn, email):
     # create query to extract data from db for user_id
-    query = f"""select first_name, faculty, skills, phone, description from users where email !='{email}'"""
+    query = f"""select first_name, faculty, skills, phone, description, email from users where email !='{email}'"""
 
     # run query
     cursor = conn.cursor()
@@ -127,6 +127,7 @@ def get_users_profiles(conn, email):
         "skills": user_details1[2],
         "phone": user_details1[3],
         "description": user_details1[4],
+        "email": user_details1[5]
     }
 
     profile2 = {
@@ -135,6 +136,7 @@ def get_users_profiles(conn, email):
         "skills": user_details2[2],
         "phone": user_details2[3],
         "description": user_details2[4],
+        "email": user_details2[5]
     }
 
     profile3 = {
@@ -143,6 +145,7 @@ def get_users_profiles(conn, email):
         "skills": user_details3[2],
         "phone": user_details3[3],
         "description": user_details3[4],
+        "email": user_details3[5]
     }
 
     profiles = {
