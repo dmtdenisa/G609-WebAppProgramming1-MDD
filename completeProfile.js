@@ -4,11 +4,13 @@ function complete_profile(){
     const facultate = document.getElementsByName("facultateID")[0].value;
     const skills = document.getElementsByName("skillInpName")[0].value;
     const telefon = document.getElementsByName("telefonInpName")[0].value;
+    const descriere = document.getElementsByName("descriptionInpName")[0].value;
 
     const body = {
         "faculty": facultate,
         "skills":skills,
-        "phone": telefon
+        "phone": telefon,
+        "description": descriere
     }; 
     let headers = {
         "Content-Type": "application/json",

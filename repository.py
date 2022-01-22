@@ -96,6 +96,9 @@ def update_user_profile(conn, user_details, email):
         if key == 'phone':
             set_statement = set_statement + f"{key}='{value}',"
 
+        if key == 'description':
+            set_statement = set_statement + f"{key}='{value}',"
+
     set_statement = set_statement[:-1]
     query = f"""UPDATE users SET {set_statement} WHERE email='{email}'"""
 
@@ -103,9 +106,9 @@ def update_user_profile(conn, user_details, email):
     cursor.execute(query)
     conn.commit()
 
-def get_users_profiles(conn):
+def get_users_profiles(conn, email):
     # create query to extract data from db for user_id
-    query = f"""select first_name, faculty, skills, phone, description from users"""
+    query = f"""select first_name, faculty, skills, phone, description from users where email !='{email}'"""
 
     # run query
     cursor = conn.cursor()

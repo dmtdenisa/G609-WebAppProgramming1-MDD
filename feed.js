@@ -12,3 +12,24 @@ function getUsers(){
         user1Skill.innerText=userDetails["profile1"]["skills"];})
         .catch(error)
 }
+
+function error(response) {
+    console.log(response);
+    let html="<a href='#' class='close' data-bs-dismiss='alert' role='button'>&times;</a>"
+    html+="<strong>"+response.error;
+    html+="</strong";
+    let errorDiv = document.createElement("div");
+    const body = document.getElementsByTagName("body")[0];
+
+    if(!errorDivC) {
+        errorDiv.setAttribute("name","alertaBootS");
+        let errorDivC = document.getElementsByName("alertaBootS")[0];
+        errorDiv.setAttribute("role","alert");
+        //errorDiv.setAttribute("id","alertaBootSID");
+        errorDiv.setAttribute("class","alert alert-danger alert-dismissible");
+        errorDiv.innerHTML=html;
+        body.prepend(errorDiv);
+    } else {
+        errorDiv.innerHTML=html;
+    }
+}

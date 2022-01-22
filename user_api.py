@@ -60,6 +60,7 @@ def sign_in():
             return jsonify(error), 401
 
         access_token = create_access_token(identity=email)
+        conn.close()
         return jsonify(access_token=access_token)
 
     except Exception as e:
@@ -82,6 +83,7 @@ def complete_profile():
     try:
         conn = connect_to_database(database)
         update_user_profile(conn,body,current_user)
+        conn.close()
         return '',200 #jsonify(logged_in_as=current_user)
     except Exception as e:
         error = {
@@ -93,9 +95,11 @@ def complete_profile():
 @app.route("/api/v1/sign-in/completeProfile/feed", methods=["GET"])
 @jwt_required()
 def user_feed():
+    current_user = get_jwt_identity()
     try:
         conn = connect_to_database(database)
-        userDetails=get_users_profiles(conn)
+        userDetails=get_users_profiles(conn,current_user)
+        conn.close()
         return userDetails, 200
     except Exception as e:
         error = {
