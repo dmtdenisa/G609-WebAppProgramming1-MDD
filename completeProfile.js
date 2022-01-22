@@ -70,3 +70,7 @@ function error(response) {
         errorDiv.innerHTML=html;
     }
 }
+
+function skip() {
+    window.location.href = 'feed.html';
+}

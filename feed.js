@@ -87,3 +87,7 @@ function logOut() {
     sessionStorage.removeItem("token");
     window.location.href = 'LogIn.html';
 }
+
+function editProfile() {
+    window.location.href = 'completeProfile.html';
+}
