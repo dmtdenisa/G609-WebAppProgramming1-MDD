@@ -13,12 +13,12 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <title>StudyBuds</title>
 </head>
-<body>
+<body onload="getUsers()">
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
     <nav class=" navbar navbar-light bg-light" style="font-family: 'Dongle';">
       <div class=" container-fluid">
-        <a class="navbar-brand font-weight-bold" href="#">StudyBuds</a>
+        <a class="navbar-brand" style="font-weight: bold; font-size: 190%;" href="#">StudyBuds</a>
         <div class="d-flex" style="font-size: large;">
           <button class="btn btn-outline-danger btn-lg" type="button">Log Out</button>
         </div>
@@ -36,12 +36,12 @@
                 </div>
               <div class="col-md-6 col-xs-12">
                 <div class="card-block px-2">
-                  <h5 class="card-title ">User</h5>
-                  <p class="card-text ">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <h5 class="card-title" id="user1Name">User</h5>
+                  <p class="card-text" id="user1Description">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                   <h6 class="card-subtitle mb-2 text-muted">Facultate</h6>
-                  <p class="card-text ">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <p class="card-text" id="user1Faculty">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                   <h6 class="card-subtitle mb-2 text-muted">Skill</h6>
-                  <p class="card-text ">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <p class="card-text" id="user1Skill">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                   <a href="#" class="btn btn-primary">Contacteaza</a>
                 </div>
               </div>

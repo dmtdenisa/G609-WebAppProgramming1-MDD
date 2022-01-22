@@ -5,7 +5,7 @@ from flask_jwt_extended import JWTManager
 from flask_jwt_extended import create_access_token
 from flask_jwt_extended import get_jwt_identity
 from flask_jwt_extended import jwt_required
-from repository import database, connect_to_database, create_user, get_user_email, get_user_password, get_user_profile, update_user_profile
+from repository import database, connect_to_database, create_user, get_user_email, get_user_password, get_user_profile, update_user_profile, get_users_profiles
 import datetime
 from functools import wraps
 
@@ -88,6 +88,22 @@ def complete_profile():
             "error": f"--Failed to complete profile. Cause: {e}"
         }
         return jsonify(error), 500
+
+
+@app.route("/api/v1/sign-in/completeProfile/feed", methods=["GET"])
+@jwt_required()
+def user_feed():
+    try:
+        conn = connect_to_database(database)
+        userDetails=get_users_profiles(conn)
+        return userDetails, 200
+    except Exception as e:
+        error = {
+            "error": f"--Failed to complete profile. Cause: {e}"
+        }
+        return jsonify(error), 500
+
+
 
 if __name__ == "__main__":
     app.run(debug=True, port=3004)

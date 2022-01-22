@@ -102,3 +102,49 @@ def update_user_profile(conn, user_details, email):
     cursor = conn.cursor()
     cursor.execute(query)
     conn.commit()
+
+def get_users_profiles(conn):
+    # create query to extract data from db for user_id
+    query = f"""select first_name, faculty, skills, phone, description from users"""
+
+    # run query
+    cursor = conn.cursor()
+    user_details = list(cursor.execute(query))
+
+    if len(user_details) < 3:
+        return {}
+
+    user_details1 = user_details[0]
+    user_details2 = user_details[1]
+    user_details3 = user_details[2]
+
+    profile1 = {
+        "first_name": user_details1[0],
+        "faculty": user_details1[1],
+        "skills": user_details1[2],
+        "phone": user_details1[3],
+        "description": user_details1[4],
+    }
+
+    profile2 = {
+        "first_name": user_details2[0],
+        "faculty": user_details2[1],
+        "skills": user_details2[2],
+        "phone": user_details2[3],
+        "description": user_details2[4],
+    }
+
+    profile3 = {
+        "first_name": user_details3[0],
+        "faculty": user_details3[1],
+        "skills": user_details3[2],
+        "phone": user_details3[3],
+        "description": user_details3[4],
+    }
+
+    profiles = {
+        "profile1":profile1,
+        "profile2":profile2,
+        "profile3":profile3
+    }
+    return profiles
